@@ -25,4 +25,19 @@
 #####			@ContextConfiguration(locations = {"file:src/main/webapp/WEB-INF/spring/**/*-context.xml"})
 ####		- 다른 junit test case를 생성 후 상속받아 사용
 ## 4) XML 파일 설정
-##
+####	a. servlet-context.xml
+
+####	b. root-context.xml
+####		- mybatis
+####		1) connection - properties 파일 사용 : DriverManagerDataSource
+####		2) connection, xml : SqlSessionFactoryBean
+####		3) 최종 Mapping : SqlSessionTemplate
+####		- fileupload
+#####				CommonsMultipartResolver
+####		- properties 파일 위치 설정
+#####				PropertyPlaceholderConfigurer
+## 5) Mybatis 설정
+####	- files 위치
+####		src/main/resource 하위에 myBatis 디렉터리 생성
+####		config : mybatis 설정 파일들
+####		mappers : mybatis sql 파일들
