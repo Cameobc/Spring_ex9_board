@@ -52,8 +52,13 @@ public class QnaService implements BoardService {
 
 	@Override
 	public List<BoardDTO> getList(PageMaker pageMaker) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		//1.startRow lastRow
+		pageMaker.makeRow();
+		List<BoardDTO> ar=qnaDAO.getList(pageMaker);
+		//2.paging
+		int totalCount=qnaDAO.getTotalCount(pageMaker);
+		pageMaker.makePage(totalCount);
+		return ar;
 	}
 
 	@Override
@@ -71,4 +76,10 @@ public class QnaService implements BoardService {
 		return qnaDAO.setDelete(num);
 	}
 
+	//reply
+	public int setReply(QnaDTO qnaDTO) throws Exception{
+		int result = qnaDAO.setReplyUpdate(qnaDTO);
+		result = qnaDAO.setReply(qnaDTO);
+		return result;
+	}
 }
